@@ -1,0 +1,48 @@
+public enum LengthUnit {
+    MILLIMETER("mm",0.001,LengthSystem.SI ), CENTIMETER("cm", 0.01,LengthSystem.SI),
+    METER("m", 1.0,LengthSystem.SI), KILOMETER("km",1000.0,LengthSystem.SI),
+    ASTRONOMICAL_UNIT("au",149000000000.0,LengthSystem.SI), INCH("in",25.4e-3,LengthSystem.IMPERIAL),
+    FOOT("ft",0.305,LengthSystem.IMPERIAL), YARD("yd",0.914,LengthSystem.IMPERIAL);
+
+    private final String symbol;
+    private final double meter;
+    private enum LengthSystem{IMPERIAL,SI}
+    private final LengthSystem sys;
+
+    /**
+     * Creates a new LengthUnit
+     * @param symbol Symbol
+     * @param meter Length in meter
+     * @param sys Lengthsystem
+     */
+    LengthUnit(String symbol,double meter,LengthSystem sys){
+        this.symbol = symbol;
+        this.meter = meter;
+        this.sys = sys;
+    }
+
+    /**
+     * Returns the conversion rate from x to meter
+     * @return Length in meter
+     */
+    public double asMeter(){
+        return meter;
+    }
+
+    /**
+     * Checks if Length is in SI
+     * @return true if Lengthunit is SI
+     */
+    boolean isSI(){
+        return this.sys == LengthSystem.SI;
+    }
+
+    public String getSymbol(){
+        return symbol;
+    }
+
+    public double getMeters() {
+        return meter;
+    }
+
+}

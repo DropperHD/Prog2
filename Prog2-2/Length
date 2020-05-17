@@ -1,0 +1,50 @@
+public class Length {
+    private double value;
+    private LengthUnit unit;
+
+    /**
+     * Creates a new length
+     * @param value Value
+     * @param unit Lengthunit
+     */
+    public Length(double value,LengthUnit unit){
+
+        this.value = value;
+        this.unit = unit;
+    }
+
+    /**
+     * Converts a Length into another Length
+     * @param unit unit to convert
+     * @return Length in desired unit
+     */
+    Length as(LengthUnit unit){
+        return new Length(value/unit.asMeter(),unit);
+    }
+
+    /**
+     * Adds two Lengths
+     * @param other Length to add
+     * @return Length + other Length
+     */
+    Length add(Length other){
+        if(other == null){
+            throw new IllegalArgumentException("darf nicht null sein");
+        }
+        return new Length(value + other.getValue()*(other.getUnit().asMeter()/this.unit.asMeter()),unit);
+    }
+
+    @Override
+    public String toString() {
+        return value + unit.getSymbol();
+    }
+
+    public double getValue(){
+        return value;
+    }
+
+    public LengthUnit getUnit(){
+        return unit;
+    }
+}
+

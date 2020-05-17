@@ -1,0 +1,24 @@
+public class Calc{
+
+    public static void main(String[] args) {
+        if(args.length< 2){
+            System.out.println("Zu wenig Input");
+            System.exit(1);
+        }
+        if(args[1].equals("/")) {
+            System.out.println(Integer.parseInt(args[0]) / Integer.parseInt(args[2]));
+        }
+        if(args[1].equals("x")) {
+            System.out.println(Integer.parseInt(args[0]) * Integer.parseInt(args[2]));
+        }
+        if(args[1].equals("+")) {
+            System.out.println(Integer.parseInt(args[0]) + Integer.parseInt(args[2]));
+        }
+        if(args[1].equals("-")) {
+            System.out.println(Integer.parseInt(args[0]) - Integer.parseInt(args[2]));
+        }
+        if(args[1].equals("%")) {
+            System.out.println(Integer.parseInt(args[0]) % Integer.parseInt(args[2]));
+        }
+    }
+}

@@ -1,0 +1,75 @@
+package com.company;
+
+import java.util.Objects;
+
+/**
+ * Repräsentiert Häuser aus Game of Thrones
+ */
+public class House {
+
+    private final String name;
+    private final String seat;
+
+    /**
+     * Erstellt ein neues Haus mit Name und Sitz
+     * @param name Name des Hauses Darf nicht {@code null} sein
+     * @param seat Sitz des Hauses Darf nicht {@code null} sein
+     */
+    public House( String name,String seat){
+        if(seat == null){
+        throw new IllegalArgumentException("Parameter seat darf nicht null sein.");
+        }
+        if(name == null) {
+            throw new IllegalArgumentException("Parameter name darf nicht null sein.");
+        }
+        if(name.equals("")){
+            throw new IllegalArgumentException("Parameter seat darf nicht null sein.");
+        }
+        if(seat.equals("")){
+            throw new IllegalArgumentException("Parameter seat darf nicht null sein.");
+        }
+        this.name = name;
+        this.seat = seat;
+    }
+
+    /**
+     * Klonkonstuktor
+     * @param h Name des zu kopierenden Hauses. Darf nicht {@code null} sein
+     */
+    public House(House h){
+        name = h.name;
+        seat = h.seat;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSeat() {
+        return seat;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        House house = (House) o;
+        return Objects.equals(name, house.name) &&
+                Objects.equals(seat, house.seat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, seat);
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "name =" + '"' + name + '"' + ',' +
+                ", seat =" + '"' + seat + '"' + '\'' +
+                '}';
+    }
+}

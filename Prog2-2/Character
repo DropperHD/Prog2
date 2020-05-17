@@ -1,0 +1,231 @@
+/**
+ * @author Andreas Franz-Josef Ramsauer
+ */
+package com.company;
+import java.util.Objects;
+
+/**
+ * Charakterklasse
+ * moddeliert einzelene Charaktere aus Game of thrones
+ *
+ */
+public class Character {
+
+    private final String name;
+    private final House house;
+    private final Character mother;
+    private final Character father;
+    private boolean alive;
+    private final int fightSkills;
+
+    /**
+     * Erstellt einen neuen Chrakter mit Name, Haus, ob er lebendig ist und seinem Fightskill
+     * @param n Name Darf nicht {@code null} sein
+     * @param h Haus Darf nicht {@code null} sein @see
+     * @param a Lebendig Darf nicht {@code null} sein
+     * @param fs Fightskill Darf nicht {@code null} sein. Muss zwischen 0 und hundert sein
+     */
+    public Character(String n, House h, boolean a, int fs) {
+        if(n == null){
+            throw new IllegalArgumentException("Parameter name darf nicht null sein.");
+        }
+        if(n.equals("")){
+            throw new IllegalArgumentException("Parameter name darf nicht leer sein.");
+        }
+        if(fs <0 || fs > 100){ //fightskill muss zwischen 0 und 100 sein
+            throw new IllegalArgumentException("Parameter fightskill muss zwischen 100 und 0 sein sein.");
+        }
+        name = n;
+        house = h;
+        mother = null;
+        father = null;
+        alive = a;
+        fightSkills = fs;
+    }
+
+    /**
+     * lässt ein Kind von zwei Elten entstehen. Haus wird von der Mutter vererbt.
+     * Fightskill ist der Durchschnitt der Eltern.
+     * @param n Name Darf nicht {@code null} sein
+     * @param f Mutter Darf nicht {@code null} sein
+     * @param m Vater Darf nicht {@code null} sein
+     */
+    public Character(String n, Character f, Character m) {
+        if(n == null){
+            throw new IllegalArgumentException("Parameter name darf nicht null sein.");
+        }
+        if(n.equals("")){
+            throw new IllegalArgumentException("Parameter name darf nicht leer sein.");
+        }
+        if(f == null){
+            throw new IllegalArgumentException("Parameter father darf nicht null sein.");
+        }
+        if(m == null){
+            throw new IllegalArgumentException("Parameter mother darf nicht null sein.");
+        }
+        if(!m.getAlive() || !f.getAlive()){
+            throw new IllegalArgumentException("Beide Eltern müssen leben.");
+        }
+        if(m.equals(f)){
+            throw new IllegalArgumentException("Es kann nicht eine Person Vater und Mutter gleichzeitig sein.");
+        }
+        name = n;
+        if(m.getHouse() != null) {
+            house = m.getHouse();
+        } else {
+            house = f.getHouse(); //falls die mutter kein Haus hat wird das vom Vater genommen
+        }
+        father = f;
+        mother = m;
+        alive = true; //Kind ist immer lebendig bei der Geburt
+        if((f.getFightSkills()+m.getFightSkills())/2 > 100 ||(f.getFightSkills()+m.getFightSkills())/2 < 0){
+            throw new IllegalArgumentException("Parameter fightskill muss zwischen 100 und 0 sein sein.");
+        } //falls bei der Berechnung irgenwas schief läuft
+        fightSkills = (int) Math.round((f.getFightSkills()*1.0+m.getFightSkills()*1.0)/2.0);
+    }
+
+    /**
+     * Klont einen Charakter
+     * @param other Charakter der geklont werden soll.Darf nicht {@code null} sein
+     */
+    public Character(Character other){
+        if(other == null){
+            throw new IllegalArgumentException("Parameter xyz darf nicht null sein.");
+        }
+        name = other.getName();
+        house = other.getHouse();
+        father = other.getFather();
+        mother = other.getMother();
+        alive = other.getAlive();
+        fightSkills = other.getFightSkills();
+    }
+
+    /**
+     * lässt zwei Charaktere kämpfen.
+     * Der mit weniger Fightskill stirbt
+     * Bei Gleichstand überleben beide
+     * @param other Charakter gegen den gekämpft werden soll. Darf nicht {@code null} sein
+     */
+    public void fight(Character other){
+        if(other == null){
+            throw new IllegalArgumentException("Zum kämpfen braucht es einen Gegner!");
+        }
+        if(other.equals(this)){
+            throw new IllegalArgumentException("Kann nicht gegen sich selber kämpfen!");
+        }
+        if(!this.getAlive() || !other.getAlive()){
+            throw new IllegalArgumentException("Tote können nicht kämpfen!");
+        }
+        if(this.getFightSkills() > other.getFightSkills()){
+            other.setAlive(false);
+        }
+        if (this.getFightSkills() < other.getFightSkills()){
+            this.setAlive(false);
+        }
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public House getHouse() {
+        return house;
+    }
+
+    public Character getMother() {
+        return mother;
+    }
+
+    public Character getFather() {
+        return father;
+    }
+
+    public boolean getAlive() {
+        return alive;
+    }
+
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    public int getFightSkills() {
+        return fightSkills;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, house, mother, father, alive, fightSkills);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(this == o){
+            return true;
+        }
+        if(o == null){
+            return false;
+        }
+        if(this.getClass() != o.getClass() ){
+            return false;
+        }
+        Character other = (Character) o;
+        if(!this.name.equals(other.getName())){
+            return false;
+        }
+        if(!(this.father == null ) && other.getFather() == null){
+            return false;
+        }
+        if(this.father == null && !(other.getFather() == null)) {
+            return false;
+        }
+        if(this.father != null && other.father != null) {
+            if (!this.father.equals(other.getFather())) {
+                return false;
+            }
+        }
+        if(!(this.mother == null ) && other.getMother() == mother){
+            return false;
+        }
+        if(this.mother == null && !(other.getMother() == null)) {
+            return false;
+        }
+        if(this.mother != null && other.mother != null) {
+            if (!this.mother.equals(other.getMother())) {
+                return false;
+            }
+        }
+        if(!this.house.equals(other.getHouse())){
+            return false;
+        }
+        if(this.fightSkills != other.getFightSkills())
+        {
+            return false;
+        }
+        if(this.alive != other.getAlive()){
+            return false;
+        } else {
+        return true;
+        }
+    }
+
+    @Override
+    public String toString() {
+        String string;
+
+         string =   "Character{" +    "name='" + name + '\'' + "," ;
+         if(house != null){
+             string = string + " house=" + house.getName();
+         }
+        if(mother != null){
+            string = string + ", mother="+ this.mother.getName();
+        }
+        if (father != null) {
+            string = string + ", father=" + father.name;
+        }
+
+        string = string + ", alive=" + alive + ", fightSkills=" + fightSkills + '}';
+
+        return string;
+    }
+}
