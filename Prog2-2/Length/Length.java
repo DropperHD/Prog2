@@ -19,7 +19,7 @@ public class Length {
      * @return Length in desired unit
      */
     Length as(LengthUnit unit){
-        return new Length(value/unit.asMeter(),unit);
+        return new Length(value * this.unit.asMeter() / unit.asMeter(),unit);
     }
 
     /**

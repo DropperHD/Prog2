@@ -20,7 +20,6 @@ public enum LengthUnit {
         this.meter = meter;
         this.sys = sys;
     }
-
     /**
      * Returns the conversion rate from x to meter
      * @return Length in meter
@@ -35,6 +34,20 @@ public enum LengthUnit {
      */
     boolean isSI(){
         return this.sys == LengthSystem.SI;
+    }
+
+    /**
+     * Returns the matching LengthUnit for a symbol
+     * @param symbol symbol to search for
+     * @return LengthUnit Object as declared in the Enum
+     */
+    public static LengthUnit fromSymbol(String symbol){
+        for(LengthUnit length : LengthUnit.values()){
+            if(symbol.equals(length.symbol)){
+                return length;
+            }
+        }
+        throw new IllegalArgumentException("Symbol not found");
     }
 
     public String getSymbol(){
