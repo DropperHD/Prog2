@@ -5,28 +5,28 @@ package com.company;
 public class Main{
     public static void main(String args[]){
 
-        House Stark = new House("Stark","Winterfell");
-        Character Eddard = new Character("Eddard",Stark,true,88);
-        Character Catelyn = new Character("Catelyn",Stark,true,42);
-        Character Robb = new Character("Rob",Eddard,Catelyn);
+        House Stark = new House("Stark","Winterfell");              //Hier wird das Haus Stark erstellt
+        Character Eddard = new Character("Eddard",Stark,true,88);     //Nach dem Haus kommen die Charaktere Eddard und Catelyn
+        Character Catelyn = new Character("Catelyn",Stark,true,42);   //Jetzt da man die beiden hat kann man mit
+        Character Robb = new Character("Rob",Eddard,Catelyn);                //dem Geburtskonstruktor ihre Kinder erstellen
         Character Sansa = new Character("Sansa",Eddard,Catelyn);
         Character Arya = new Character("Arya",Eddard,Catelyn);
         Character Bryan = new Character("Bryan",Eddard,Catelyn);
 
-        Eddard.setAlive(false);
-        House Frey = new House("Frey","The Twins");
-        Character Raymund = new Character("Raymund",Frey,true,68);
-        Raymund.fight(Catelyn);
+        Eddard.setAlive(false);                                                  //Eddard wird geköpft
+        House Frey = new House("Frey","The Twins");                  //Haus Frey wird erstellt
+        Character Raymund = new Character("Raymund",Frey,true,68);     //Raymund wird erstellt
 
-        System.out.println(Stark.toString());
-        System.out.println(Eddard.toString());
+        Raymund.fight(Catelyn);                                                  //Bei der roten Hochzeit stirbt Catelyn.
+        System.out.println(Stark.toString());                                    //da sie weniger fightskill hat gewinnt
+        System.out.println(Eddard.toString());                                   //Raymund
         System.out.println(Catelyn.toString());
-        System.out.println(Robb.toString());
-        System.out.println(Sansa.toString());
-        System.out.println(Arya.toString());
-        System.out.println(Bryan.toString());
-        System.out.println();
-
+        System.out.println(Robb.toString());                                     //Am Schluss werden alle Charactere per
+        System.out.println(Sansa.toString());                                    //toString ausgegeben
+        System.out.println(Arya.toString());                                     //da man den toString überschreibt wird zb
+        System.out.println(Bryan.toString());                                    //Character.getfather.name ausgegeben anstat
+        System.out.println();                                                    //dem kompletten Vater das ganze sehr
+                                                                                 //unübersichtlich gemacht hätte
         System.out.println(Frey.toString());
         System.out.println(Raymund.toString());
 
