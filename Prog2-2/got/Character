@@ -11,12 +11,12 @@ import java.util.Objects;
  */
 public class Character {
 
-    private final String name;
-    private final House house;
-    private final Character mother;
-    private final Character father;
-    private boolean alive;
-    private final int fightSkills;
+    private final String name; //Name des Charakters  darf nicht null oder leer sein
+    private final House house; //Haus des Charakters  darf null sein
+    private final Character mother; //Mutter darf null sein
+    private final Character father; //Vater darf null sein
+    private boolean alive; //Lebendig Ja/Nein muss festgelegt werden. Kann geändert werden
+    private final int fightSkills; //Kampfgeschick wobei 0 das schlechteste und 100 das beste
 
     /**
      * Erstellt einen neuen Chrakter mit Name, Haus, ob er lebendig ist und seinem Fightskill
@@ -29,16 +29,16 @@ public class Character {
         if(n == null){
             throw new IllegalArgumentException("Parameter name darf nicht null sein.");
         }
-        if(n.equals("")){
+        if(n.isEmpty()){ // n darf nicht "" sein
             throw new IllegalArgumentException("Parameter name darf nicht leer sein.");
         }
         if(fs <0 || fs > 100){ //fightskill muss zwischen 0 und 100 sein
             throw new IllegalArgumentException("Parameter fightskill muss zwischen 100 und 0 sein sein.");
         }
-        name = n;
-        house = h;
-        mother = null;
-        father = null;
+        name = n;      //hier wird der dem Konstruktor übergebene Parameter an die Attribute des neuen
+        house = h;     //Charakters übergeben.
+        mother = null; //In diesem Konstruktor wird Mutter und Vater nicht festgelegt. daher müssen diese mit null
+        father = null; //initialisiert werden
         alive = a;
         fightSkills = fs;
     }
@@ -50,12 +50,13 @@ public class Character {
      * @param f Mutter Darf nicht {@code null} sein
      * @param m Vater Darf nicht {@code null} sein
      */
-    public Character(String n, Character f, Character m) {
+
+    public Character(String n, Character m, Character f) {
         if(n == null){
-            throw new IllegalArgumentException("Parameter name darf nicht null sein.");
-        }
-        if(n.equals("")){
-            throw new IllegalArgumentException("Parameter name darf nicht leer sein.");
+            throw new IllegalArgumentException("Parameter name darf nicht null sein.");                             //Hier werden die Arguments überprüft
+        }                                                                                                           //der Name darf nicht null oder empty sein
+        if(n.equals("")){ //Da ein leerer String sich von null unterscheidet müssen beide Fälle geprüft werden      //m und f dürfen nicht null oder gleich sein
+            throw new IllegalArgumentException("Parameter name darf nicht leer sein.");                             //und beide müssen Leben
         }
         if(f == null){
             throw new IllegalArgumentException("Parameter father darf nicht null sein.");
@@ -63,7 +64,7 @@ public class Character {
         if(m == null){
             throw new IllegalArgumentException("Parameter mother darf nicht null sein.");
         }
-        if(!m.getAlive() || !f.getAlive()){
+        if(!m.getAlive() || !f.getAlive()){ //Beide Eltern müssen Leben
             throw new IllegalArgumentException("Beide Eltern müssen leben.");
         }
         if(m.equals(f)){
@@ -71,28 +72,27 @@ public class Character {
         }
         name = n;
         if(m.getHouse() != null) {
-            house = m.getHouse();
+            house = m.getHouse();                                                             //Das Kind ist dem Haus der Mutter angehörig
         } else {
-            house = f.getHouse(); //falls die mutter kein Haus hat wird das vom Vater genommen
+            house = f.getHouse();                                                             //falls die Mutter kein Haus hat wird das vom Vater genommen
         }
         father = f;
         mother = m;
         alive = true; //Kind ist immer lebendig bei der Geburt
-        if((f.getFightSkills()+m.getFightSkills())/2 > 100 ||(f.getFightSkills()+m.getFightSkills())/2 < 0){
-            throw new IllegalArgumentException("Parameter fightskill muss zwischen 100 und 0 sein sein.");
-        } //falls bei der Berechnung irgenwas schief läuft
-        fightSkills = (int) Math.round((f.getFightSkills()*1.0+m.getFightSkills()*1.0)/2.0);
-    }
+
+        fightSkills = (int) Math.round((f.getFightSkills()*1.0+m.getFightSkills()*1.0)/2.0); //Fightskill wird hier berechnet indem man den Durschnitt
+    }                                                                                        //durch 2 Teilt. Da es zwei Int Werte sind muss man zuerst in double runden und dann zurück
+                                                                                             //casten. sonst sind die Werte falsch
 
     /**
      * Klont einen Charakter
      * @param other Charakter der geklont werden soll.Darf nicht {@code null} sein
      */
     public Character(Character other){
-        if(other == null){
+        if(other == null){ //null kann man nicht kopieren
             throw new IllegalArgumentException("Parameter xyz darf nicht null sein.");
         }
-        name = other.getName();
+        name = other.getName(); //Hier wird ein neuer Charakter erstellt und die Attribute des Alten übernommen
         house = other.getHouse();
         father = other.getFather();
         mother = other.getMother();
@@ -107,27 +107,27 @@ public class Character {
      * @param other Charakter gegen den gekämpft werden soll. Darf nicht {@code null} sein
      */
     public void fight(Character other){
-        if(other == null){
+        if(other == null){ //other darf nicht null sein
             throw new IllegalArgumentException("Zum kämpfen braucht es einen Gegner!");
         }
-        if(other.equals(this)){
+        if(other.equals(this)){ //this und other dürfen nicht das selbe sein
             throw new IllegalArgumentException("Kann nicht gegen sich selber kämpfen!");
         }
-        if(!this.getAlive() || !other.getAlive()){
+        if(!this.getAlive() || !other.getAlive()){ //beide müssen Leben
             throw new IllegalArgumentException("Tote können nicht kämpfen!");
         }
-        if(this.getFightSkills() > other.getFightSkills()){
+        if(this.getFightSkills() > other.getFightSkills()){ //falls  der Fightskill von other kleiner ist stirbt other
             other.setAlive(false);
         }
-        if (this.getFightSkills() < other.getFightSkills()){
-            this.setAlive(false);
+        if (this.getFightSkills() < other.getFightSkills()){ //bei gleichem fightskill werden die ifs übersprungen
+            this.setAlive(false);                            //da der case this = other nicht bei < und > dabei ist
         }
     }
 
 
     public String getName() {
         return name;
-    }
+    } //Getter "getten" die Attribute und machen sie für andere Klassen sichtbar
 
     public House getHouse() {
         return house;
@@ -145,8 +145,8 @@ public class Character {
         return alive;
     }
 
-    public void setAlive(boolean alive) {
-        this.alive = alive;
+    public void setAlive(boolean alive) {//Alive ist das einzig veränderbare
+        this.alive = alive;              //Attribut deshalb hat es als einziges einen Setter
     }
 
     public int getFightSkills() {
@@ -160,31 +160,31 @@ public class Character {
 
     @Override
     public boolean equals(Object o) {
-        if(this == o){
-            return true;
+        if(this == o){  //bei this == true wird geschaut ob es sich um das selbe Object handelt.
+            return true; //in dem fall wär es sogar genau das selbe,da die referencen auf den selben Platz im spiecher zeigen ähnlich wie Pointer in C
         }
-        if(o == null){
+        if(o == null){ //ein erzeugtes Object kann nicht gleich mit null sein daher false
             return false;
         }
-        if(this.getClass() != o.getClass() ){
+        if(this.getClass() != o.getClass() ){ //O muss die selbe Klasse haben wie This
             return false;
         }
-        Character other = (Character) o;
-        if(!this.name.equals(other.getName())){
+        Character other = (Character) o; //Falls es die selbe Klasse ist kann ein Typcast durchgeführt werden um auf die Funktionen zugreifen zu können
+        if(!this.name.equals(other.getName())){ //jetzt werden alle Attribute durchgegangen und auf Gleichheit überprüft
+            return false;                       //Es werden die Getter benutzt da die Attribute von o private sind
+        }
+        if(!(this.father == null ) && other.getFather() == null){ //Hier muss man aufpassen da, this.equals(o.father) ein Nullpointer geben könnte
             return false;
         }
-        if(!(this.father == null ) && other.getFather() == null){
+        if(this.father == null && !(other.getFather() == null)) { //Deshalb wird einmal geschaut ob beide Väter null sind,dann jeweils einzeln
             return false;
         }
-        if(this.father == null && !(other.getFather() == null)) {
-            return false;
-        }
-        if(this.father != null && other.father != null) {
+        if(this.father != null && other.father != null) { //Falls beide Charakter einen Vater haben,wird geschaut ob es sich um den selben handelt
             if (!this.father.equals(other.getFather())) {
                 return false;
             }
         }
-        if(!(this.mother == null ) && other.getMother() == mother){
+        if(!(this.mother == null ) && other.getMother() == mother){ //bei den Müttern genau das gleiche
             return false;
         }
         if(this.mother == null && !(other.getMother() == null)) {
@@ -195,37 +195,33 @@ public class Character {
                 return false;
             }
         }
-        if(!this.house.equals(other.getHouse())){
+        if(!this.house.equals(other.getHouse())){ //
             return false;
         }
-        if(this.fightSkills != other.getFightSkills())
+        if(this.fightSkills != other.getFightSkills()) //fightskills müssen auch identisch sein
         {
             return false;
         }
-        if(this.alive != other.getAlive()){
-            return false;
-        } else {
-        return true;
-        }
+        return this.alive == other.getAlive(); //genauso wie alive
     }
 
     @Override
     public String toString() {
-        String string;
+        String string;                //anfangs wird ein String deklariert der später zur fertigen Ausgabe zusammenaddiert wird
 
-         string =   "Character{" +    "name='" + name + '\'' + "," ;
-         if(house != null){
+         string =   "Character{" +    "name='" + name + '\'' + "," ; //Einen Namen muss er haben also kann der einfach genommen werden
+         if(house != null){                                          //Haus darf null sein,falls der Character keins hat wird es einfach weggelassen
              string = string + " house=" + house.getName();
          }
-        if(mother != null){
+        if(mother != null){ //Bei Mutter und Vater das selbe
             string = string + ", mother="+ this.mother.getName();
         }
         if (father != null) {
             string = string + ", father=" + father.name;
         }
 
-        string = string + ", alive=" + alive + ", fightSkills=" + fightSkills + '}';
+        string = string + ", alive=" + alive + ", fightSkills=" + fightSkills + '}'; //alive und fightskill machen auch keine Probleme
 
-        return string;
+        return string;           //am Schluss wird der ganze String nun zurückgegeben
     }
 }
