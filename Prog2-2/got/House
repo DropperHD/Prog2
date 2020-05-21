@@ -7,8 +7,8 @@ import java.util.Objects;
  */
 public class House {
 
-    private final String name;
-    private final String seat;
+    private final String name; //Name des Hauses
+    private final String seat; //Wohnsitz des Hauses
 
     /**
      * Erstellt ein neues Haus mit Name und Sitz
@@ -28,17 +28,17 @@ public class House {
         if(seat.equals("")){
             throw new IllegalArgumentException("Parameter seat darf nicht null sein.");
         }
-        this.name = name;
-        this.seat = seat;
-    }
+        this.name = name; //Parameter werden an die Attribute der Klasse übergeben
+        this.seat = seat; //da die lockalen Variablen name und seat die Attribue überschreiben muss man
+    }                     //this benutzen damit der Compiler weiß auf was man sich bezieht
 
     /**
      * Klonkonstuktor
      * @param h Name des zu kopierenden Hauses. Darf nicht {@code null} sein
      */
-    public House(House h){
-        name = h.name;
-        seat = h.seat;
+    public House(House h){ //Parameter werden an die Attribute der Klasse übergeben
+        name = h.name;     //braucht keine Argument Überprüfungen da das Orginale Haus
+        seat = h.seat;     //diese gemacht dadurch gültige Attribute haben muss
     }
 
     public String getName() {
@@ -51,11 +51,11 @@ public class House {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        House house = (House) o;
-        return Objects.equals(name, house.name) &&
-                Objects.equals(seat, house.seat);
+        if (this == o) return true;                                //falls this == o immer true
+        if (o == null || getClass() != o.getClass()) return false; //falls nicht die selbe Klasse false
+        House house = (House) o;                                   //Da selbe Klasse Typcast möglich
+        return name.equals(house.name) && seat.equals(house.seat); //falls name und seat gleich sind ist das object gleich
+
     }
 
     @Override
@@ -68,7 +68,7 @@ public class House {
     @Override
     public String toString() {
         return "House{" +
-                "name =" + '"' + name + '"' + ',' +
+                "name =" + '"' + name + '"' + ',' +      //gibt den String im Format House{name = "x",seat = "y"} zurück
                 ", seat =" + '"' + seat + '"' + '\'' +
                 '}';
     }
