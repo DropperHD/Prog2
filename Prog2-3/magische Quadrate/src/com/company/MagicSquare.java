@@ -11,8 +11,8 @@ public class MagicSquare {
 
     public static boolean isMagic(int[][] square) {
         checkArguments(square);
-        int[] magicnumber = {0};
-        return square.length == 0 || checkVertical(square,magicnumber) && checkHorizontal(square, magicnumber) && checkDiagonal(square, magicnumber);
+        int[] magicNumber = {0};
+        return square.length == 0 || checkVertical(square,magicNumber) && checkHorizontal(square, magicNumber) && checkDiagonal(square, magicNumber);
     }
 
     private static void checkArguments(int[][] square){
@@ -26,53 +26,43 @@ public class MagicSquare {
         }
     }
 
-    private static boolean checkDiagonal(int[][] square, int[] magicnumber) {
+    private static boolean checkDiagonal(int[][] square, int[] magicNumber) {
         int calc = 0;
         int i = 0;
         for (int[] rows : square) {  //Diagonal
             calc += rows[i];
         }
-        return calc == magicnumber[0];
+        return calc == magicNumber[0];
     }
 
 
-    private static boolean checkHorizontal(int[][] square, int[] magicnumber) {
-        int calc = 0;
+    private static boolean checkHorizontal(int[][] square, int[] magicNumber) {
         for (int[] rows : square) {  //Horizontal
-            if (magicnumber[0] != 0) {
-                calc = 0;
-                for (int numbers : rows) {
-                    calc += numbers;
-                }
-                if(calc != magicnumber[0]){
-                    return false;
-                }
+            int calc = 0;
+            for (int numbers : rows) {
+                calc += numbers;
             }
-            if (magicnumber[0] == 0) {
-                for (int numbers : rows) {
-                    magicnumber[0] += numbers;
-                }
+            if(calc != magicNumber[0]){
+                    return false;
             }
         }
         return true;
     }
 
 
-    private static boolean checkVertical(int[][] square , int[] magicnumber){
-    int calc = 0;
-        for (int[] rows : square) {  //Horizontal
-            if (magicnumber[0] != 0) {
-                calc = 0;
+    private static boolean checkVertical(int[][] square , int[] magicNumber){
+        for (int[] rows : square) {  //Vertikal
+            if (magicNumber[0] != 0) {
+                int calc = 0;
                 for (int numbers : rows) {
                     calc += numbers;
                 }
-                if(calc != magicnumber[0]){
+                if (calc != magicNumber[0]) {
                     return false;
                 }
-            }
-            if (magicnumber[0] == 0) {
+            } else {
                 for (int numbers : rows) {
-                    magicnumber[0] += numbers;
+                    magicNumber[0] += numbers;
                 }
             }
         }
