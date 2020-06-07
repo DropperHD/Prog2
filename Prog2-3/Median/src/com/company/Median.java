@@ -3,7 +3,11 @@ package com.company;
 import java.util.Arrays;
 
 public class Median {
-
+    /**Errechnet den Median von mehreren Zahlen
+     *
+     * @param ints vararg aus ints
+     * @return den Median der Zahlen
+     */
     public static double computeMedian(int ... ints){ //int...ints ist ein vararg und kann so viele int speichern wie man will
 
         if(ints == null){ //ints darf nicht null sein
