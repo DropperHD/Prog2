@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91cb1f8c-f410-4c93-861f-6fbf750c0109" name="Default Changelist" comment="" />
+    <list default="true" id="91cb1f8c-f410-4c93-861f-6fbf750c0109" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/PasswordChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/PasswordChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../magische Quadrate/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../magische Quadrate/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../magische Quadrate/out/production/magische Quadrate/com/company/MagicSquare.class" beforeDir="false" afterPath="$PROJECT_DIR$/../magische Quadrate/out/production/magische Quadrate/com/company/MagicSquare.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
