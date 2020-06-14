@@ -1,3 +1,6 @@
-/Prog2-4/RealFunctions/out/*
+/**/**/.idea/
+/**/**/out/
+
+
 *.class
 *.xml
