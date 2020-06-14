@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ea5e8f4-ae8f-4289-9e34-5ccec412e57e" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="5ea5e8f4-ae8f-4289-9e34-5ccec412e57e" name="Default Changelist" comment="f">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prog2-3/Median/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prog2-3/Median/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Prog2-3/worldjumble/src/com/company/WordJumble.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Prog2-3/worldjumble/src/com/company/WordJumble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RealFunctions/META-INF/RealFunctions.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RealFunctions/de/hawlandshut/calculus/BinaryOperations/Addition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RealFunctions/de/hawlandshut/calculus/BinaryOperations/Addition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/hawlandshut/calculus/BinaryOperations/Addition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/hawlandshut/calculus/BinaryOperations/Addition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/hawlandshut/calculus/BinaryOperations/Composition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/hawlandshut/calculus/BinaryOperations/Composition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/de/hawlandshut/calculus/BinaryOperations/Multiplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/de/hawlandshut/calculus/BinaryOperations/Multiplication.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,9 +25,18 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="ProjectId" id="1cOuXaguLDS8NGqobYy5vsZGoLv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../prog 3/magische Quadrate" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.19451074" />
@@ -32,19 +50,7 @@
       <recent name="C:\Users\Andreas Ramsauer\OneDrive\Info\RealFunctions\src\de\hawlandshut\calculus" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.RealFunctionTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="de.hawlandshut.calculus.Main" />
       <module name="RealFunctions" />
@@ -124,11 +130,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.BinaryOperationTest" />
-        <item itemvalue="JUnit.DifferentiableBinaryOperationTest" />
-        <item itemvalue="JUnit.DifferentiableFunctionTest" />
         <item itemvalue="JUnit.RealFunctionTest" />
+        <item itemvalue="JUnit.DifferentiableFunctionTest" />
+        <item itemvalue="JUnit.DifferentiableBinaryOperationTest" />
+        <item itemvalue="JUnit.BinaryOperationTest" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -144,6 +150,10 @@
       <updated>1590412001217</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="f" />
+    <option name="LAST_COMMIT_MESSAGE" value="f" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

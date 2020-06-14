@@ -27,8 +27,8 @@ public class Composition extends BinaryOperation implements Differentiable {
         if(!(getLeft() instanceof Differentiable && getRight() instanceof Differentiable)){
             throw new DiffException("Diff");
         }
-        Composition Comp = new Composition((RealFunction) ((Differentiable) getLeft()).derive(),getRight());
-        return new Multiplication(Comp,(RealFunction) ((Differentiable) getRight()).derive());
+        Composition Comp = new Composition(((Differentiable) getLeft()).derive(),getRight());
+        return new Multiplication(Comp, ((Differentiable) getRight()).derive());
     }
 
     @Override

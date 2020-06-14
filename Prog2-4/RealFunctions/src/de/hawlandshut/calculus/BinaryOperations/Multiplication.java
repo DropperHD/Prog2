@@ -33,8 +33,8 @@ public class Multiplication extends BinaryOperation implements Differentiable {
         if(!(getLeft() instanceof Differentiable && getRight() instanceof Differentiable)){
             throw new DiffException("Diff");
         }
-        Multiplication firstMultiplication = new Multiplication(getLeft(), (RealFunction) ((Differentiable) getRight()).derive());
-        Multiplication secondMultiplication = new Multiplication((RealFunction) ((Differentiable) getLeft()).derive(),getRight());
+        Multiplication firstMultiplication = new Multiplication(getLeft(), ((Differentiable) getRight()).derive());
+        Multiplication secondMultiplication = new Multiplication(((Differentiable) getLeft()).derive(),getRight());
         return new Addition(firstMultiplication,secondMultiplication);
     }
 }

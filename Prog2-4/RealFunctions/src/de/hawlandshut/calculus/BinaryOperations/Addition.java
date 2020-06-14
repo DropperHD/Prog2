@@ -33,6 +33,6 @@ public class Addition extends BinaryOperation implements Differentiable {
         if(!(getLeft() instanceof Differentiable && getRight() instanceof Differentiable)){
             throw new DiffException("Diff");
         }
-        return new Addition( (RealFunction) ((Differentiable) getLeft()).derive(),(RealFunction) (Differentiable) ((Differentiable) getRight()).derive());
+        return new Addition(((Differentiable) getLeft()).derive(), ((Differentiable) getRight()).derive());
     }
 }

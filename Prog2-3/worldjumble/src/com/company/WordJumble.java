@@ -23,10 +23,10 @@ public class WordJumble
     if(word.length()<3){
       builder.append(word);
       return;
-    }                                            //zweiter Stringbuilder um das Wort zu verändern
-    StringBuilder sb = new StringBuilder(word);  //
+    }                                            
+    StringBuilder sb = new StringBuilder(word);  //zweiter Stringbuilder um das Wort zu verändern
     for(int i = 1; i < word.length()-2;i+=2){    //Es wird vom zweiten Buchstaben bis zum vor-vorletzen durchgegangen
-      sb.insert(i+2,sb.charAt(i));         //Da es immer in Zweierpaaren passiert,wird zuerst der erste Buchstabe
+      sb.insert(i+2,sb.charAt(i));               //Da es immer in Zweierpaaren passiert,wird zuerst der erste Buchstabe
       sb.deleteCharAt(i);                        //nach dem zweiten kopiert und dann der Orginale gelöscht
     }
     word = sb.toString();                        //sb.toString gibt dann den veräderten String aus und kopiert diesen wieder in word
