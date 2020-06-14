@@ -3,7 +3,7 @@ package de.hawlandshut.calculus.functions;
 import de.hawlandshut.calculus.Differiantiability.Differentiable;
 
 public class Constant extends RealFunction implements Differentiable {
-    private double c;
+    private final double c;
 
     public Constant(double c){
         this.c = c;
