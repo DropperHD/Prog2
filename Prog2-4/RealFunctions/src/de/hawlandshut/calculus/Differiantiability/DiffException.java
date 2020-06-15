@@ -1,6 +1,9 @@
 package de.hawlandshut.calculus.Differiantiability;
 
 public class DiffException extends Exception {
-    public DiffException(){}                //toDo dritten Konstruktor rausfinden
-    public DiffException(String name){}
+
+    public DiffException(String message){super(message);}
+    public DiffException(Throwable cause){super(cause);}
+    public DiffException(String message,Throwable cause){
+        super(message,cause);}
 }
