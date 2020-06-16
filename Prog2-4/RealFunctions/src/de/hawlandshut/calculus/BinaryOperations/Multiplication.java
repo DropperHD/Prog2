@@ -14,12 +14,12 @@ public class Multiplication extends BinaryOperation implements Differentiable {
     }
 
     @Override
-    public double evaluateAt(double x) {
+    public double evaluateAt(double x){
         return getLeft().evaluateAt(x) * getRight().evaluateAt(x);
     }
 
     @Override
-    public boolean inDomain(double x) {
+    public boolean inDomain(double x){
         return getLeft().inDomain(x) && getRight().inDomain(x);
     }
 
@@ -31,7 +31,7 @@ public class Multiplication extends BinaryOperation implements Differentiable {
     @Override
     public Addition derive() throws DiffException {
         if(!(getLeft() instanceof Differentiable && getRight() instanceof Differentiable)){
-            throw new DiffException("Diff");
+            throw new DiffException("Eine der beiden Operanden ist nicht Differenzierbar!");
         }
         Multiplication firstMultiplication = new Multiplication(getLeft(), ((Differentiable) getRight()).derive());
         Multiplication secondMultiplication = new Multiplication(((Differentiable) getLeft()).derive(),getRight());

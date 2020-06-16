@@ -14,12 +14,12 @@ public class Addition extends BinaryOperation implements Differentiable {
     }
 
     @Override
-    public double evaluateAt(double x) {
+    public double evaluateAt(double x){
         return getLeft().evaluateAt(x) + getRight().evaluateAt(x);
     }
 
     @Override
-    public boolean inDomain(double x) {
+    public boolean inDomain(double x){
         return getLeft().inDomain(x) && getRight().inDomain(x);
     }
 

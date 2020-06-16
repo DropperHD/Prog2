@@ -3,7 +3,7 @@ package de.hawlandshut.calculus.functions;
 import de.hawlandshut.calculus.Differiantiability.Differentiable;
 
 public class Cosine extends RealFunction implements Differentiable { //Cosinus ist eine Reelle Funktion und ableitbar
-    private final double a,f;   //Sinus kann durch zwei Zahlen verändert werden
+    private final double a,f;   //Cosinus kann durch zwei Zahlen verändert werden
                                 //a für die Amplitude und f um zu strecken
 
     /**
