@@ -2,20 +2,26 @@ package de.hawlandshut.calculus.functions;
 
 import de.hawlandshut.calculus.Differiantiability.Differentiable;
 
-public class Constant extends RealFunction implements Differentiable {
-    private final double c;
+public class Constant extends RealFunction implements Differentiable { //Konstante Funktionen sind Reelle Funktionen
+    private final double c; //Konstante C                     //Funktion ist ableitbar also braucht man das Interface
 
+    /** Erstellt neue Konstante funktion
+     *
+     * f(x) = c
+     * @param c Konstante
+     */
     public Constant(double c){
         this.c = c;
     }
+
     @Override
     public double evaluateAt(double x) {
-        return c;
+        return c;                          //y von Konstanten sind immer gleich also wird einfach c returned
     }
 
     @Override
     public boolean inDomain(double x) {
-        return true;
+        return true;                       //Die Definitionsmenge ist R also immer true
     }
 
     @Override
@@ -25,6 +31,6 @@ public class Constant extends RealFunction implements Differentiable {
 
     @Override
     public RealFunction derive() {
-        return new Constant(0);
+        return new Constant(0);         //Ableitungen von Konstanten sind immer 0
     }
 }

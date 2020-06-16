@@ -1,9 +1,10 @@
 package de.hawlandshut.calculus.Differiantiability;
-
-public class DiffException extends Exception {
-
-    public DiffException(String message){super(message);}
-    public DiffException(Throwable cause){super(cause);}
-    public DiffException(String message,Throwable cause){
-        super(message,cause);}
+                                                                //Exeption genau wie in der Vorlesung
+public class DiffException extends Exception {                  //Eigene Exeptions leiten von Expetion ab
+                                                                //serialVersionUID wird nicht benötigt bei mir
+    public DiffException(String message){super(message);}       //erster Konstruktor mit Message
+    public DiffException(Throwable cause){super(cause);}        //zweiter mit Cause
+    public DiffException(String message,Throwable cause){       //dritter mit beiden
+        super(message,cause);
+    }
 }
