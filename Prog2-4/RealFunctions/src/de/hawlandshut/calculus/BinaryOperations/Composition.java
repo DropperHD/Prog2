@@ -25,7 +25,7 @@ public class Composition extends BinaryOperation implements Differentiable {
     @Override
     public Multiplication derive() throws DiffException {
         if(!(getLeft() instanceof Differentiable && getRight() instanceof Differentiable)){
-            throw new DiffException("Diff");
+            throw new DiffException("Einer der beiden Operanden ist nicht Differenzierbar!");
         }
         Composition Comp = new Composition(((Differentiable) getLeft()).derive(),getRight());
         return new Multiplication(Comp, ((Differentiable) getRight()).derive());

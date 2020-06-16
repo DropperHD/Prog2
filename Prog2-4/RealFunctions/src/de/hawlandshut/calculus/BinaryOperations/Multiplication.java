@@ -31,7 +31,7 @@ public class Multiplication extends BinaryOperation implements Differentiable {
     @Override
     public Addition derive() throws DiffException {
         if(!(getLeft() instanceof Differentiable && getRight() instanceof Differentiable)){
-            throw new DiffException("Eine der beiden Operanden ist nicht Differenzierbar!");
+            throw new DiffException("Einer der beiden Operanden ist nicht Differenzierbar!");
         }
         Multiplication firstMultiplication = new Multiplication(getLeft(), ((Differentiable) getRight()).derive());
         Multiplication secondMultiplication = new Multiplication(((Differentiable) getLeft()).derive(),getRight());

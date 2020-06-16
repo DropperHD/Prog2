@@ -31,7 +31,7 @@ public class Addition extends BinaryOperation implements Differentiable {
     @Override
     public Addition derive() throws DiffException {
         if(!(getLeft() instanceof Differentiable && getRight() instanceof Differentiable)){
-            throw new DiffException("Diff");
+            throw new DiffException("Einer der beiden Operanden ist nicht Differenzierbar!");
         }
         return new Addition(((Differentiable) getLeft()).derive(), ((Differentiable) getRight()).derive());
     }
