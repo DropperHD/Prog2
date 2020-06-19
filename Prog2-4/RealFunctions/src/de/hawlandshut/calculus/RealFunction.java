@@ -1,4 +1,4 @@
-package de.hawlandshut.calculus.functions;
+package de.hawlandshut.calculus;
 
 public abstract class RealFunction {    //Abstrakte Klasse von der alle gewünschten Funktionen ableiten sollen
     /**

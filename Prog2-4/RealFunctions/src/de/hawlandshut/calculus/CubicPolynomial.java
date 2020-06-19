@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.functions;
-
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
+package de.hawlandshut.calculus;
 
 public class CubicPolynomial extends RealFunction implements Differentiable { //Ein Polynom ist eine Reelle Funktion und ableitbar
     private final double a,b,c,d; //a für x^3 b für x^2 c für x^1 und d für x^0

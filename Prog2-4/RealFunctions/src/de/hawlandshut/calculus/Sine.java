@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.functions;
-
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
+package de.hawlandshut.calculus;
 
 public class Sine extends RealFunction implements Differentiable {
     private final double a,f; //Sinus kann durch zwei Zahlen verändert werden

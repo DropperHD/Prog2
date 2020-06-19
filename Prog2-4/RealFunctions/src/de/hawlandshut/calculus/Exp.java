@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.functions;
-
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
+package de.hawlandshut.calculus;
 
 public class Exp extends RealFunction implements Differentiable { //Reelle Funktion und ableitbar
     //braucht keine Parameter oder Konstruktoren ,denn die e-Funktion ist immer gleich

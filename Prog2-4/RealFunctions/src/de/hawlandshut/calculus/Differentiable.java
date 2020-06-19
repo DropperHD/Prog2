@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.Differiantiability;
-
-import de.hawlandshut.calculus.functions.RealFunction;
+package de.hawlandshut.calculus;
 
 public interface Differentiable {                   //Interface zum Ableiten
 

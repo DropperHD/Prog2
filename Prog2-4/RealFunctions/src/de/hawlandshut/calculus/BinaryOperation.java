@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.BinaryOperations;
-
-import de.hawlandshut.calculus.functions.RealFunction;
+package de.hawlandshut.calculus;
 
 public abstract class BinaryOperation extends RealFunction {
     private final RealFunction left,right; //Eine Binäroperation besteht immer aus zwei Funktionen

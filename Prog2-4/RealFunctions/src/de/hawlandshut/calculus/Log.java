@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.functions;
-
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
+package de.hawlandshut.calculus;
 
 public class Log extends RealFunction implements Differentiable { //Reelle Funktion und Ableitbar
     //braucht keine Parameter oder Konstruktoren ,denn die Log-Funktion ist immer gleich

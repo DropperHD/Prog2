@@ -1,10 +1,10 @@
-package test;
-
-import de.hawlandshut.calculus.Differiantiability.DiffException;
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
-import de.hawlandshut.calculus.functions.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
+
+import java.lang.reflect.Modifier;
+import java.util.function.DoubleFunction;
+
+import de.hawlandshut.calculus.*;
 
 public class DifferentiableFunctionTest {
     @Test public void testDifferentiable() {
@@ -21,11 +21,11 @@ public class DifferentiableFunctionTest {
     }
 
     @Test public void testConstantDiff() throws DiffException{
-      var f = new Constant(3);
+      Constant f = new Constant(3);
 
       assertTrue("Constant must implement Differentiable", f instanceof Differentiable);
 
-      var d = f.derive();
+      RealFunction d = f.derive();
 
       assertTrue(d instanceof Constant);
 
@@ -37,11 +37,11 @@ public class DifferentiableFunctionTest {
     }
 
     @Test public void testCubicPolynomialDiff() throws DiffException{
-      var f = new CubicPolynomial(-4,3,-2,1);
+      CubicPolynomial f = new CubicPolynomial(-4,3,-2,1);
 
       assertTrue("CubicPolynomial must implement Differentiable", f instanceof Differentiable);
 
-      var d = f.derive();
+      RealFunction d = f.derive();
 
       assertTrue(d instanceof CubicPolynomial);
 
@@ -53,11 +53,11 @@ public class DifferentiableFunctionTest {
     }
 
     @Test public void testSineDiff() throws DiffException{
-      var f = new Sine(2,3);
+      Sine f = new Sine(2,3);
 
       assertTrue("Sine must implement Differentiable", f instanceof Differentiable);
 
-      var d = f.derive();
+      RealFunction d = f.derive();
 
       assertTrue(d instanceof Cosine);
 
@@ -69,11 +69,11 @@ public class DifferentiableFunctionTest {
     }
 
     @Test public void testCosineDiff() throws DiffException{
-      var f = new Cosine(2,3);
+      Cosine f = new Cosine(2,3);
 
       assertTrue("Cosine must implement Differentiable", f instanceof Differentiable);
 
-      var d = f.derive();
+      RealFunction d = f.derive();
 
       assertTrue(d instanceof Sine);
 
@@ -85,11 +85,11 @@ public class DifferentiableFunctionTest {
     }
 
     @Test public void testExpDiff() throws DiffException{
-      var f = new Exp();
+      Exp f = new Exp();
 
       assertTrue("Exp must implement Differentiable", f instanceof Differentiable);
 
-      var d = f.derive();
+      RealFunction d = f.derive();
 
       assertTrue(d instanceof Exp);
 
@@ -101,11 +101,11 @@ public class DifferentiableFunctionTest {
     }
 
     @Test public void testLogDiff() throws DiffException{
-      var f = new Log();
+      Log f = new Log();
 
       assertTrue("Exp must implement Differentiable", f instanceof Differentiable);
 
-      var d = f.derive();
+      RealFunction d = f.derive();
 
       for (double x = -10; x < 10; x+=0.1){
         assertEquals(d.inDomain(x), x > 0);

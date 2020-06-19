@@ -1,9 +1,6 @@
 package de.hawlandshut.calculus;
 
-import de.hawlandshut.calculus.BinaryOperations.Addition;
-import de.hawlandshut.calculus.functions.Cosine;
-import de.hawlandshut.calculus.functions.Exp;
-import de.hawlandshut.calculus.functions.Sine;
+import de.hawlandshut.calculus.*;
 
 public class Main {
 

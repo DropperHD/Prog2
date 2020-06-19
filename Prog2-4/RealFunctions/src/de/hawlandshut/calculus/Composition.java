@@ -1,8 +1,4 @@
-package de.hawlandshut.calculus.BinaryOperations;
-
-import de.hawlandshut.calculus.Differiantiability.DiffException;
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
-import de.hawlandshut.calculus.functions.RealFunction;
+package de.hawlandshut.calculus;
 
 public class Composition extends BinaryOperation implements Differentiable {
     public Composition(RealFunction left, RealFunction right) {

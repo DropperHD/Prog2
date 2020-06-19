@@ -1,14 +1,14 @@
-package test;
-
-import de.hawlandshut.calculus.functions.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Modifier;
+import java.util.function.DoubleFunction;
+
+import de.hawlandshut.calculus.*;
 
 public class RealFunctionTest {
     @Test public void testRealFunction() {
-    var c = RealFunction.class; 
+    Class c = RealFunction.class; 
     assertTrue(
         "RealFunction must be abstract",
         Modifier.isAbstract(c.getModifiers()));

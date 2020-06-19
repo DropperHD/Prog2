@@ -1,7 +1,5 @@
 package de.hawlandshut.calculus;
 
-import de.hawlandshut.calculus.functions.RealFunction;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;

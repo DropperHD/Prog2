@@ -1,36 +1,31 @@
-package test;
-
-import de.hawlandshut.calculus.BinaryOperations.Composition;
-import de.hawlandshut.calculus.BinaryOperations.Multiplication;
-import de.hawlandshut.calculus.BinaryOperations.Addition;
-import de.hawlandshut.calculus.Differiantiability.DiffException;
-import de.hawlandshut.calculus.functions.Cosine;
-import de.hawlandshut.calculus.functions.OutsideOfDomainException;
-import de.hawlandshut.calculus.functions.RealFunction;
-import de.hawlandshut.calculus.functions.Sine;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Modifier;
+import java.util.function.DoubleFunction;
+
+import de.hawlandshut.calculus.*;
+
 public class DifferentiableBinaryOperationTest {
 
-  private static class NonDiffFunction extends RealFunction {
-    @Override
-    public boolean inDomain(double x) {
-      return true;
-    }
+  private static class NonDiffFunction extends RealFunction{
+
     @Override
     public double evaluateAt(double x) throws OutsideOfDomainException {
       return 0;
     }
 
-
+    @Override
+    public boolean inDomain(double x) {
+      return true;
+    }
 
   }
 
   @Test(expected = DiffException.class)
   public void testAdditionNonDiff() throws DiffException{
     Sine sin = new Sine(1,1);
-    var nonDiff = new NonDiffFunction();
+    NonDiffFunction nonDiff = new NonDiffFunction();
     Addition a = new Addition(sin,nonDiff);
     a.derive();
   }
@@ -40,7 +35,7 @@ public class DifferentiableBinaryOperationTest {
     Cosine cos = new Cosine(2,2);
     Addition a = new Addition(sin,cos);
 
-    var d = a.derive();
+    RealFunction d = a.derive();
 
     assertTrue(d instanceof Addition);
 
@@ -52,8 +47,8 @@ public class DifferentiableBinaryOperationTest {
   @Test(expected = DiffException.class)
   public void testMultiplicationNonDiff() throws DiffException{
     Sine sin = new Sine(1,1);
-    var nonDiff = new NonDiffFunction();
-    var a = new Multiplication(sin,nonDiff);
+    NonDiffFunction nonDiff = new NonDiffFunction();
+    Multiplication a = new Multiplication(sin,nonDiff);
     a.derive();
   }
 
@@ -62,7 +57,7 @@ public class DifferentiableBinaryOperationTest {
     Cosine cos = new Cosine(2,2);
     Multiplication a = new Multiplication(sin,cos);
 
-    var d = a.derive();
+    RealFunction d = a.derive();
 
     assertTrue(d instanceof Addition);
 
@@ -75,8 +70,8 @@ public class DifferentiableBinaryOperationTest {
   @Test(expected = DiffException.class)
   public void testCompositionNonDiff() throws DiffException{
     Sine sin = new Sine(1,1);
-    var nonDiff = new NonDiffFunction();
-    var a = new Composition(sin,nonDiff);
+    NonDiffFunction nonDiff = new NonDiffFunction();
+    Composition a = new Composition(sin,nonDiff);
     a.derive();
   }
 
@@ -85,7 +80,7 @@ public class DifferentiableBinaryOperationTest {
     Cosine cos = new Cosine(2,2);
     Composition a = new Composition(sin,cos);
 
-    var d = a.derive();
+    RealFunction d = a.derive();
 
     assertTrue(d instanceof Multiplication);
 

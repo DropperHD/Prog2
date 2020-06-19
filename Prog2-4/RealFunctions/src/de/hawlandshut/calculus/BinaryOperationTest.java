@@ -1,18 +1,14 @@
-package test;
-
-import de.hawlandshut.calculus.BinaryOperations.Addition;
-import de.hawlandshut.calculus.BinaryOperations.BinaryOperation;
-import de.hawlandshut.calculus.BinaryOperations.Composition;
-import de.hawlandshut.calculus.BinaryOperations.Multiplication;
-import de.hawlandshut.calculus.functions.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import java.lang.reflect.Modifier;
+import java.util.function.DoubleFunction;
+
+import de.hawlandshut.calculus.*;
 
 public class BinaryOperationTest {
     @Test public void testBinaryOperation() {
-    var c = BinaryOperation.class;
+    Class c = BinaryOperation.class; 
     assertTrue(
         "BinaryOperation must be abstract",
         Modifier.isAbstract(c.getModifiers()));

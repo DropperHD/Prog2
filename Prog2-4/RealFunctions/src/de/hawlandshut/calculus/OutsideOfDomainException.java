@@ -1,4 +1,4 @@
-package de.hawlandshut.calculus.functions;
+package de.hawlandshut.calculus;
 
 public class OutsideOfDomainException extends RuntimeException{            //Eigene checked Exeption
                                                                     //Konstruktoren genau wie in der Vorlesung

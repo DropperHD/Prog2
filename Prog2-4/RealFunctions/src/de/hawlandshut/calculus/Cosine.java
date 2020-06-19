@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.functions;
-
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
+package de.hawlandshut.calculus;
 
 public class Cosine extends RealFunction implements Differentiable { //Cosinus ist eine Reelle Funktion und ableitbar
     private final double a,f;   //Cosinus kann durch zwei Zahlen verändert werden

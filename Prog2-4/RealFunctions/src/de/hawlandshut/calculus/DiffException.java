@@ -1,4 +1,4 @@
-package de.hawlandshut.calculus.Differiantiability;
+package de.hawlandshut.calculus;
                                                                 //Exeption genau wie in der Vorlesung
 public class DiffException extends Exception {                  //Eigene Exeptions leiten von Expetion ab
                                                                 //serialVersionUID wird nicht benötigt bei mir

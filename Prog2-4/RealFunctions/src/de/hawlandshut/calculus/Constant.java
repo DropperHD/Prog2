@@ -1,6 +1,4 @@
-package de.hawlandshut.calculus.functions;
-
-import de.hawlandshut.calculus.Differiantiability.Differentiable;
+package de.hawlandshut.calculus;
 
 public class Constant extends RealFunction implements Differentiable { //Konstante Funktionen sind Reelle Funktionen
     private final double c; //Konstante C                     //Funktion ist ableitbar also braucht man das Interface
