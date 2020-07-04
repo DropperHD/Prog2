@@ -45,9 +45,8 @@ public class IterableArray2D implements Iterable<Double> {
                 numberIndex = 0;
                 arrayIndex += 1;
             }
-            numberIndex++;
             totalNumberIndex++;
-            return IterableArray2D.this.a2d[arrayIndex][numberIndex-1];
+            return IterableArray2D.this.a2d[arrayIndex][numberIndex++];
         }
     }
 }
