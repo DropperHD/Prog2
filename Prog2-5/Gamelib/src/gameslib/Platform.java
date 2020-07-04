@@ -7,6 +7,8 @@ public class Platform implements Comparable<Platform>{
     private final String company;
 
     public Platform(String name, String company) {
+        if(name == null || company == null || company.equals("") || name.equals(""))
+            throw new IllegalArgumentException();
         this.name = name;
         this.company = company;
     }
