@@ -125,8 +125,19 @@ public class GamesLibrary{
    * @return map from genre to number of games of the genre
    */
   public Map<Genre, Integer> getGenreCount(){
-    // TODO
-    return null;
+    int counter = 0;
+    Map<Genre, Integer> map = new TreeMap<>();
+    for(Genre genre : Genre.values()){
+      for(Game game : games){
+        if(game.getGenre() == genre){
+          counter ++;
+        }
+      }
+      map.put(genre, counter);
+      counter = 0;
+    }
+
+    return map;
   }
 
   /**
