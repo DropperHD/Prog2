@@ -4,10 +4,15 @@ import java.util.*;
 
 public class GamesLibrary{
 
+  Set<Platform> platforms;
+  Set<Game> games;
+
   /**
    * Default constructor.
    */
   public GamesLibrary(){
+    this.platforms = new HashSet<>();
+    this.games = new HashSet<>();
   }
 
   /**
@@ -17,7 +22,14 @@ public class GamesLibrary{
    * @throws GamesLibraryException if platform is already in games library.
    */
   public void addPlatform(Platform platform){
-    // TODO
+
+    if(platform == null){
+      throw new IllegalArgumentException();
+    }
+    if(platforms.contains(platform)){
+      throw new GamesLibraryException("");
+    }
+    platforms.add(platform);
   }
 
   /**
@@ -28,7 +40,14 @@ public class GamesLibrary{
    * @throws GamesLibraryException if platform is not in games library
    */
   public void removePlatform(Platform platform){
-    // TODO
+    if(platform == null){
+      throw new IllegalArgumentException();
+    }
+    if(!platforms.contains(platform)){
+      throw new GamesLibraryException("");
+    }
+    platforms.remove(platform);
+
   }
 
   /**
@@ -40,7 +59,15 @@ public class GamesLibrary{
    * game is not in game library
    */
   public void addGame(Game game){
-    // TODO
+
+   if(game == null){
+     throw new IllegalArgumentException();
+   }
+
+   if(games.contains(game)){
+     throw new GamesLibraryException("");
+   }
+    games.add(game);
   }
 
   /**
@@ -50,7 +77,7 @@ public class GamesLibrary{
    * @throws GamesLibraryException if game is not in library
    */
   public void removeGame(Game game){
-    // TODO
+    games.remove(game);
   }
 
   /**
@@ -59,8 +86,7 @@ public class GamesLibrary{
    * @return set of games as a read-only set
    */
   public Set<Game> getGamesReadOnly(){
-    // TODO
-    return null;
+    return Collections.unmodifiableSet(games);
   }
 
   /**
@@ -69,8 +95,7 @@ public class GamesLibrary{
    * @return set of platforms as a read-only set
    */
   public Set<Platform> getPlatformsReadOnly(){
-    // TOOD
-    return null;
+    return  Collections.unmodifiableSet(platforms);
   }
 
   /**
@@ -80,8 +105,17 @@ public class GamesLibrary{
    * empty)
    */
   public Game getBestGame(){
-    // TODO
-    return null;
+    Game bestGame = null;
+    int maxScore = 0;
+
+    for(Game game : games){
+      if(game.getMetacriticScore() > maxScore){
+        bestGame = game;
+        maxScore = game.getMetacriticScore();
+      }
+    }
+
+    return bestGame;
   }
 
   /**
@@ -99,9 +133,18 @@ public class GamesLibrary{
    * Returns a map from the platforms to the set of games on that platform.
    */
   public Map<Platform, Set<Game>> getGamesForPlatform(){
-    // TODO
-
-    return null;
+    Map<Platform, Set<Game>> map = new HashMap<>();
+    Set<Game> gameSet = new TreeSet<>();
+    for(Platform platform : platforms) {
+      for (Game game : games) {
+        if (game.getPlatform() == platform) {
+          gameSet.add(game);
+        }
+      }
+      map.put(platform,gameSet);
+      gameSet.clear();
+    }
+    return map;
   }
 
   /**

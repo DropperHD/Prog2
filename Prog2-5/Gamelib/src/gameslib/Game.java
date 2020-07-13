@@ -21,7 +21,7 @@ public class Game implements Comparable<Game> {
         return name;
     }
 
-    public Genre getGerne() {
+    public Genre getGenre() {
         return gerne;
     }
 
@@ -59,4 +59,5 @@ public class Game implements Comparable<Game> {
     public int compareTo(Game game) {
         return 0;
     }
+
 }
