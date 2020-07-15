@@ -162,7 +162,17 @@ public class GamesLibrary{
    * Returns a map from all platforms to their average metacritic scores.
    */
   public Map<Platform, Double> getAverageScoreForPlatform(){
-    // TODO
+    var gamemaps = getGamesForPlatform();
+    int score = 0;
+    var scorema
+
+    for(Map.Entry<Platform,Set<Game>> entry : gamemaps.entrySet()){
+
+
+    }
+
+
+
     return null;
   }
 
@@ -180,8 +190,22 @@ public class GamesLibrary{
    * score.
    */
   public List<Game> sortGamesByMetacriticScore(){
-    // TODO
-    return null;
+
+    List<Game> sortetgames = new ArrayList<>(games);
+
+    Comparator<Game> comp = new Comparator<>() {
+      @Override
+      public int compare(Game game, Game t1) {
+        return -Double.compare(game.getMetacriticScore(),t1.getMetacriticScore());
+      }
+
+      @Override
+      public boolean equals(Object o) {
+        return false;
+      }
+    };
+    sortetgames.sort(comp);
+    return sortetgames;
   }
 
   /**

@@ -37,6 +37,14 @@ public class Platform implements Comparable<Platform>{
 
     @Override
     public int compareTo(Platform platform) {
-        return 0;
+        if (platform == null)
+            throw new IllegalArgumentException("other platform must not be null");
+
+        int result = name.compareTo(platform.name);
+
+        if (result == 0)
+            result = company.compareTo(platform.company);
+
+        return result;
     }
 }

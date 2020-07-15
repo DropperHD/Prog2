@@ -57,7 +57,26 @@ public class Game implements Comparable<Game> {
 
     @Override
     public int compareTo(Game game) {
-        return 0;
+
+        if(game == null)
+            throw new IllegalArgumentException();
+        int result = name.compareTo(game.name);
+
+        if (result == 0)
+            result = gerne.compareTo(game.gerne);
+
+        if (result == 0)
+            result = platform.compareTo(game.platform);
+
+        if (result == 0)
+            result = this.releaseYear - game.releaseYear;
+
+        if (result == 0)
+            result = Integer.compare(metacriticScore, game.metacriticScore);
+
+        return result;
     }
 
-}
+    }
+
+
